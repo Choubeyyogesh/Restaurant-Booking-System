@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESTRO | Create Account</title>
+
+    <link rel="stylesheet" href="css/style2.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="auth-page">
+
+    <div class="login-container register-container">
+
+        <!-- Left Section -->
+        <div class="login-left">
+
+            <div class="auth-logo">RESTRO<span>.</span></div>
+
+            <div class="login-welcome">
+                <h1>Join RESTRO Today!</h1>
+                <p>
+                    Create your account and simplify your restaurant
+                    management with powerful tools.
+                </p>
+            </div>
+
+            <div class="login-features">
+                <div>
+                    <i data-lucide="calendar-check"></i>
+                    <span>Easy Table Reservations</span>
+                </div>
+
+                <div>
+                    <i data-lucide="users"></i>
+                    <span>Manage Your Customers</span>
+                </div>
+
+                <div>
+                    <i data-lucide="chart-no-axes-combined"></i>
+                    <span>Track Restaurant Performance</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Right Section -->
+        <div class="login-right">
+
+            <div class="login-heading">
+                <h2>Create Account</h2>
+                <p>Fill in your details to get started.</p>
+            </div>
+
+            <div id="registerMessage" class="auth-message"></div>
+
+            <form id="registerForm">
+
+                <div class="auth-form-group">
+                    <label for="registerName">Full Name</label>
+
+                    <div class="auth-input">
+                        <i data-lucide="user"></i>
+                        <input type="text" id="registerName"
+                               placeholder="Enter your full name"
+                               required minlength="3">
+                    </div>
+                </div>
+
+                <div class="auth-form-group">
+                    <label for="registerEmail">Email Address</label>
+
+                    <div class="auth-input">
+                        <i data-lucide="mail"></i>
+                        <input type="email" id="registerEmail"
+                               placeholder="Enter your email"
+                               required>
+                    </div>
+                </div>
+
+                <div class="auth-form-group">
+                    <label for="registerPassword">Password</label>
+
+                    <div class="auth-input">
+                        <i data-lucide="lock"></i>
+                        <input type="password" id="registerPassword"
+                               placeholder="Create a password"
+                               required minlength="6">
+                    </div>
+                </div>
+
+                <div class="auth-form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+
+                    <div class="auth-input">
+                        <i data-lucide="shield-check"></i>
+                        <input type="password" id="confirmPassword"
+                               placeholder="Confirm your password"
+                               required>
+                    </div>
+                </div>
+
+                <div class="register-terms">
+                    <input type="checkbox" id="agreeTerms" required>
+                    <label for="agreeTerms">
+                        I agree to the Terms & Conditions
+                    </label>
+                </div>
+
+                <button type="submit" class="auth-submit-btn">
+                    Create Account
+                    <i data-lucide="arrow-right"></i>
+                </button>
+
+            </form>
+
+            <div class="auth-register-link">
+                Already have an account?
+                <a href="login.html">Sign In</a>
+            </div>
+
+            <div class="auth-back-link">
+                <a href="login.html">
+                    <i data-lucide="arrow-left"></i>
+                    Back to Login
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="js/register.js"></script>
+    <script>lucide.createIcons();</script>
+
+</body>
+</html>

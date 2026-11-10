@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESTRO | Login</title>
+
+    <link rel="stylesheet" href="css/style2.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="auth-page">
+
+    <div class="login-container">
+
+        <!-- Left Section -->
+        <div class="login-left">
+
+            <div class="auth-logo">RESTRO<span>.</span></div>
+
+            <div class="login-welcome">
+                <h1>Welcome Back!</h1>
+                <p>
+                    Manage your restaurant operations,
+                    reservations and customers with ease.
+                </p>
+            </div>
+
+            <div class="login-features">
+                <div>
+                    <i data-lucide="calendar-check"></i>
+                    <span>Smart Reservation Management</span>
+                </div>
+
+                <div>
+                    <i data-lucide="users"></i>
+                    <span>Customer Management</span>
+                </div>
+
+                <div>
+                    <i data-lucide="chart-no-axes-combined"></i>
+                    <span>Reports & Analytics</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Right Section -->
+        <div class="login-right">
+
+            <div class="login-heading">
+                <h2>Sign In</h2>
+                <p>Enter your details to access your account.</p>
+            </div>
+
+            <div id="loginMessage" class="auth-message"></div>
+
+            <form id="loginForm">
+
+                <div class="auth-form-group">
+                    <label for="loginEmail">Email Address</label>
+
+                    <div class="auth-input">
+                        <i data-lucide="mail"></i>
+                        <input type="email" id="loginEmail"
+                               placeholder="Enter your email" required>
+                    </div>
+                </div>
+
+                <div class="auth-form-group">
+                    <label for="loginPassword">Password</label>
+
+                    <div class="auth-input">
+                        <i data-lucide="lock"></i>
+                        <input type="password" id="loginPassword"
+                               placeholder="Enter your password" required>
+
+                        <i data-lucide="eye" id="togglePassword"
+                           class="password-toggle"></i>
+                    </div>
+                </div>
+
+                <div class="auth-options">
+                    <label>
+                        <input type="checkbox" id="rememberMe">
+                        Remember me
+                    </label>
+
+                    <a href="#" id="forgotPassword">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="auth-submit-btn">
+                    Sign In
+                    <i data-lucide="arrow-right"></i>
+                </button>
+
+            </form>
+
+            <div class="auth-register-link">
+                Don't have an account?
+                <a href="register.html">Create Account</a>
+            </div>
+
+            <div class="auth-back-link">
+                <a href="index1.html">
+                    <i data-lucide="arrow-left"></i>
+                    Back to Dashboard
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="js/login.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+
+</body>
+</html>
