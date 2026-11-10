@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Table Availability | Restro</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <i data-lucide="utensils"></i>
+            <h2>Restro<span>.</span></h2>
+        </div>
+
+        <p class="menu-heading">MAIN MENU</p>
+
+        <nav class="sidebar-menu">
+
+            <a href="index.html" class="nav-link">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="tables.html" class="nav-link">
+                <i data-lucide="armchair"></i>
+                <span>Table Management</span>
+            </a>
+
+            <a href="bookings.html" class="nav-link">
+                <i data-lucide="calendar-check"></i>
+                <span>Bookings</span>
+            </a>
+
+            <a href="customers.html" class="nav-link">
+                <i data-lucide="users"></i>
+                <span>Customers</span>
+            </a>
+
+            <a href="table-layout.html" class="nav-link">
+                <i data-lucide="layout-grid"></i>
+                <span>Table Layout</span>
+            </a>
+
+            <a href="calendar.html" class="nav-link">
+                <i data-lucide="calendar-days"></i>
+                <span>Calendar</span>
+            </a>
+
+            <a href="availability.html" class="nav-link active">
+                <i data-lucide="search-check"></i>
+                <span>Availability</span>
+            </a>
+
+     <a href="reports.html" class="nav-link">
+    <i data-lucide="chart-no-axes-combined"></i>
+    <span>Reports</span>
+</a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="user-profile">
+
+                <div class="avatar">Y</div>
+
+                <div>
+                    <h4>Admin User</h4>
+                    <p>Administrator</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+                <h2>Table Availability</h2>
+                <p>Find available tables for restaurant reservations.</p>
+            </div>
+
+        </header>
+
+
+        <section class="dashboard-content">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>Find Available Tables</h2>
+                    <p>Enter your booking requirements below.</p>
+                </div>
+
+            </div>
+
+
+            <!-- SEARCH FORM -->
+
+            <div class="content-card availability-form">
+
+                <form id="availabilityForm">
+
+                    <div class="availability-fields">
+
+                        <div class="form-group">
+
+                            <label for="bookingDate">
+                                Booking Date
+                            </label>
+
+                            <input
+                                type="date"
+                                id="bookingDate"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="bookingTime">
+                                Booking Time
+                            </label>
+
+                            <input
+                                type="time"
+                                id="bookingTime"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="guestCount">
+                                Number of Guests
+                            </label>
+
+                            <input
+                                type="number"
+                                id="guestCount"
+                                min="1"
+                                max="20"
+                                placeholder="Enter guests"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <button type="submit" class="primary-btn">
+
+                        <i data-lucide="search"></i>
+
+                        Check Availability
+
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- SEARCH RESULTS -->
+
+            <div class="availability-results">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Available Tables</h2>
+                        <p id="availabilityMessage">
+                            Search to find available tables.
+                        </p>
+                    </div>
+
+                    <span id="availableCount">
+                        0 Tables
+                    </span>
+
+                </div>
+
+
+                <div id="availabilityResults" class="availability-grid">
+
+                </div>
+
+
+                <div id="emptyAvailability" class="empty-message">
+
+                    Select your date, time and guests to find tables.
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- BOOKING CONFIRMATION MODAL -->
+
+<div class="modal-overlay" id="availabilityModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <h3>Confirm Reservation</h3>
+
+            <button
+                class="close-btn"
+                onclick="closeAvailabilityModal()">
+
+                &times;
+
+            </button>
+
+        </div>
+
+
+        <div id="availabilityDetails"></div>
+
+
+        <form id="quickBookingForm">
+
+            <div class="form-group">
+
+                <label>Customer Name</label>
+
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Enter customer name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Phone Number</label>
+
+                <input
+                    type="tel"
+                    id="customerPhone"
+                    placeholder="Enter phone number"
+                    pattern="[0-9]{10}"
+                    required
+                >
+
+            </div>
+
+
+            <button type="submit" class="primary-btn">
+
+                Confirm Booking
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="js/availability.js"></script>
+
+</body>
+</html>

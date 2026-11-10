@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customer Management | Restro</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <i data-lucide="utensils"></i>
+            <h2>Restro<span>.</span></h2>
+        </div>
+
+        <p class="menu-heading">MAIN MENU</p>
+
+        <nav class="sidebar-menu">
+
+            <a href="index.html" class="nav-link">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="tables.html" class="nav-link">
+                <i data-lucide="armchair"></i>
+                <span>Table Management</span>
+            </a>
+
+            <a href="bookings.html" class="nav-link">
+                <i data-lucide="calendar-check"></i>
+                <span>Bookings</span>
+            </a>
+
+            <a href="customers.html" class="nav-link active">
+                <i data-lucide="users"></i>
+                <span>Customers</span>
+            </a>
+
+           <a href="table-layout.html" class="nav-link">
+    <i data-lucide="layout-grid"></i>
+    <span>Table Layout</span>
+</a>
+
+            <a href="calendar.html" class="nav-link">
+    <i data-lucide="calendar-days"></i>
+    <span>Calendar</span>
+</a>
+
+
+<a href="availability.html" class="nav-link">
+    <i data-lucide="search-check"></i>
+    <span>Availability</span>
+</a>
+
+
+<a href="reports.html" class="nav-link">
+    <i data-lucide="chart-no-axes-combined"></i>
+    <span>Reports</span>
+</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="user-profile">
+
+                <div class="avatar">Y</div>
+
+                <div>
+                    <h4>Admin User</h4>
+                    <p>Administrator</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+                <h2>Customer Management</h2>
+                <p>Manage your restaurant customers.</p>
+            </div>
+
+            <button class="primary-btn" onclick="openCustomerModal()">
+                <i data-lucide="plus"></i>
+                Add Customer
+            </button>
+
+        </header>
+
+
+        <section class="dashboard-content">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>Customer Directory</h2>
+                    <p>Manage customer profiles and relationships.</p>
+                </div>
+
+            </div>
+
+
+            <!-- Statistics -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        <i data-lucide="users"></i>
+                    </div>
+
+                    <p>Total Customers</p>
+                    <h2 id="totalCustomers">0</h2>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        <i data-lucide="user-check"></i>
+                    </div>
+
+                    <p>Active Customers</p>
+                    <h2 id="activeCustomers">0</h2>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        <i data-lucide="calendar-check"></i>
+                    </div>
+
+                    <p>Total Bookings</p>
+                    <h2 id="customerBookings">0</h2>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        <i data-lucide="star"></i>
+                    </div>
+
+                    <p>VIP Customers</p>
+                    <h2 id="vipCustomers">0</h2>
+
+                </div>
+
+            </div>
+
+
+            <!-- Customer List -->
+
+            <div class="content-card table-management-card">
+
+                <div class="table-toolbar">
+
+                    <div>
+                        <h3>All Customers</h3>
+                        <p>View and manage customer information.</p>
+                    </div>
+
+                    <div class="table-controls">
+
+                        <input
+                            type="search"
+                            id="searchCustomer"
+                            placeholder="Search customers..."
+                        >
+
+                        <select id="customerFilter">
+
+                            <option value="All">All Customers</option>
+                            <option value="VIP">VIP Customers</option>
+                            <option value="Regular">Regular Customers</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Customer</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Total Bookings</th>
+                                <th>Preference</th>
+                                <th>Customer Type</th>
+                                <th>Actions</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="customerBody"></tbody>
+
+                    </table>
+
+                    <div id="emptyCustomers" class="empty-message" hidden>
+                        No customers found.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- Add/Edit Customer Modal -->
+
+<div class="modal-overlay" id="customerModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+                <h3 id="customerModalTitle">Add New Customer</h3>
+                <p>Enter customer information.</p>
+            </div>
+
+            <button class="close-btn" onclick="closeCustomerModal()">
+                &times;
+            </button>
+
+        </div>
+
+
+        <form id="customerForm">
+
+            <input type="hidden" id="editCustomerId">
+
+
+            <label>Full Name</label>
+
+            <input
+                type="text"
+                id="customerFullName"
+                placeholder="Enter full name"
+                required
+            >
+
+
+            <label>Phone Number</label>
+
+            <input
+                type="tel"
+                id="customerMobile"
+                placeholder="10 digit mobile number"
+                pattern="[0-9]{10}"
+                maxlength="10"
+                required
+            >
+
+
+            <label>Email Address</label>
+
+            <input
+                type="email"
+                id="customerEmail"
+                placeholder="example@gmail.com"
+            >
+
+
+            <label>Customer Preference</label>
+
+            <select id="customerPreference">
+
+                <option value="Indoor">Indoor</option>
+                <option value="Outdoor">Outdoor</option>
+                <option value="VIP">VIP</option>
+                <option value="No Preference">No Preference</option>
+
+            </select>
+
+
+            <label>Special Occasion</label>
+
+            <select id="specialOccasion">
+
+                <option value="None">None</option>
+                <option value="Birthday">Birthday</option>
+                <option value="Anniversary">Anniversary</option>
+                <option value="Other">Other</option>
+
+            </select>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    onclick="closeCustomerModal()">
+
+                    Cancel
+
+                </button>
+
+                <button type="submit" class="primary-btn">
+
+                    Save Customer
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- Customer Details Modal -->
+
+<div class="modal-overlay" id="detailsModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+                <h3>Customer Profile</h3>
+                <p>Customer booking information.</p>
+            </div>
+
+            <button class="close-btn" onclick="closeDetailsModal()">
+                &times;
+            </button>
+
+        </div>
+
+        <div id="customerDetails"></div>
+
+    </div>
+
+</div>
+
+
+<script src="js/customers.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Restro - Booking Management</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <i data-lucide="utensils"></i>
+                <h2>Restro<span>.</span></h2>
+            </div>
+
+            <p class="menu-heading">MAIN MENU</p>
+
+            <nav class="sidebar-menu">
+
+                <a href="#" class="nav-link active">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="tables.html" class="nav-link">
+    <i data-lucide="armchair"></i>
+    <span>Table Management</span>
+</a>
+
+               <a href="bookings.html" class="nav-link">
+    <i data-lucide="calendar-check"></i>
+    <span>Bookings</span>
+</a>
+
+               
+
+              <a href="customers.html" class="nav-link">
+    <i data-lucide="users"></i>
+    <span>Customers</span>
+</a>
+                <a href="table-layout.html" class="nav-link">
+    <i data-lucide="layout-grid"></i>
+    <span>Table Layout</span>
+</a>
+
+               <a href="calendar.html" class="nav-link">
+    <i data-lucide="calendar-days"></i>
+    <span>Calendar</span>
+</a>
+
+
+
+<a href="availability.html" class="nav-link">
+    <i data-lucide="search-check"></i>
+    <span>Availability</span>
+</a>
+
+<a href="reports.html" class="nav-link">
+    <i data-lucide="chart-no-axes-combined"></i>
+    <span>Reports</span>
+</a>
+            </nav>
+
+            <p class="menu-heading">PREFERENCES</p>
+
+            <nav class="sidebar-menu">
+
+                <a href="#" class="nav-link">
+                    <i data-lucide="settings"></i>
+                    <span>Settings</span>
+                </a>
+
+                <a href="#" class="nav-link">
+                    <i data-lucide="help-circle"></i>
+                    <span>Help Center</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="user-profile">
+                    <div class="avatar">Y</div>
+
+                    <div>
+                        <h4>Admin User</h4>
+                        <p>Administrator</p>
+                    </div>
+
+                    <i data-lucide="chevrons-up-down"></i>
+                </div>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Topbar -->
+            <header class="topbar">
+
+                <div>
+                    <h2>Dashboard</h2>
+                    <p>Welcome back! Here's what's happening today.</p>
+                </div>
+
+                <div class="topbar-actions">
+
+                    <button class="icon-btn">
+                        <i data-lucide="bell"></i>
+                    </button>
+
+                    <div class="topbar-date">
+                        <i data-lucide="calendar"></i>
+                        <span id="currentDate">Today</span>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- Dashboard Content -->
+            <section class="dashboard-content">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Overview</h2>
+                        <p>Track your restaurant performance.</p>
+                    </div>
+
+                    <button class="primary-btn">
+                        <i data-lucide="plus"></i>
+                        New Booking
+                    </button>
+                </div>
+
+
+                <!-- Statistics Cards -->
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon purple">
+                                <i data-lucide="calendar-check"></i>
+                            </div>
+                            <span class="growth">+12.5%</span>
+                        </div>
+
+                        <p>Total Bookings</p>
+                        <h2>248</h2>
+                        <small>Compared to last month</small>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon green">
+                                <i data-lucide="armchair"></i>
+                            </div>
+                            <span class="growth">+8.2%</span>
+                        </div>
+
+                        <p>Available Tables</p>
+                        <h2>18</h2>
+                        <small>Out of 30 total tables</small>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon orange">
+                                <i data-lucide="users"></i>
+                            </div>
+                            <span class="growth">+5.4%</span>
+                        </div>
+
+                        <p>Total Customers</p>
+                        <h2>186</h2>
+                        <small>Registered customers</small>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon blue">
+                                <i data-lucide="wallet"></i>
+                            </div>
+                            <span class="growth">+15.8%</span>
+                        </div>
+
+                        <p>Total Revenue</p>
+                        <h2>₹84,500</h2>
+                        <small>This month's revenue</small>
+                    </div>
+
+                </div>
+
+
+                <!-- Lower Dashboard -->
+                <div class="dashboard-grid">
+
+                    <!-- Reservation Overview -->
+                    <div class="content-card">
+
+                        <div class="card-heading">
+                            <div>
+                                <h3>Reservation Overview</h3>
+                                <p>Booking activity throughout the week</p>
+                            </div>
+
+                            <select>
+                                <option>This Week</option>
+                                <option>This Month</option>
+                            </select>
+                        </div>
+
+                        <div class="chart-placeholder">
+                            <i data-lucide="chart-column-increasing"></i>
+                            <p>Reservation chart will appear here</p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Table Occupancy -->
+                    <div class="content-card">
+
+                        <div class="card-heading">
+                            <div>
+                                <h3>Table Occupancy</h3>
+                                <p>Current table status</p>
+                            </div>
+                        </div>
+
+                        <div class="occupancy">
+                            <div class="occupancy-circle">
+                                <div>
+                                    <h2>65%</h2>
+                                    <small>Occupied</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="occupancy-details">
+
+                            <p><span class="dot green-dot"></span> Available <b>18</b></p>
+
+                            <p><span class="dot purple-dot"></span> Reserved <b>8</b></p>
+
+                            <p><span class="dot orange-dot"></span> Occupied <b>4</b></p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Recent Bookings -->
+                <div class="content-card recent-bookings">
+
+                    <div class="card-heading">
+                        <div>
+                            <h3>Recent Bookings</h3>
+                            <p>Latest restaurant reservations</p>
+                        </div>
+
+                        <button class="view-btn">View All</button>
+                    </div>
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Booking ID</th>
+                                    <th>Date & Time</th>
+                                    <th>Guests</th>
+                                    <th>Table</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>Rahul Sharma</td>
+                                    <td>#BK1021</td>
+                                    <td>Today, 07:30 PM</td>
+                                    <td>4</td>
+                                    <td>T-04</td>
+                                    <td><span class="badge confirmed">Confirmed</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Priya Verma</td>
+                                    <td>#BK1022</td>
+                                    <td>Today, 08:00 PM</td>
+                                    <td>2</td>
+                                    <td>T-02</td>
+                                    <td><span class="badge pending">Pending</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Amit Patel</td>
+                                    <td>#BK1023</td>
+                                    <td>Tomorrow, 01:00 PM</td>
+                                    <td>6</td>
+                                    <td>T-08</td>
+                                    <td><span class="badge confirmed">Confirmed</span></td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="js/app.js"></script>
+
+    <script>
+        lucide.createIcons();
+    </script>
+
+</body>
+</html>

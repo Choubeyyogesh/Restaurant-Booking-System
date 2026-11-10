@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications | Restro</title>
+
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <i data-lucide="utensils"></i>
+            <h2>Restro</h2>
+        </div>
+
+        <p class="menu-heading">MENU</p>
+
+        <nav class="sidebar-menu">
+
+            <a href="index.html" class="nav-link">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="tables.html" class="nav-link">
+                <i data-lucide="armchair"></i>
+                <span>Table Management</span>
+            </a>
+
+            <a href="bookings.html" class="nav-link">
+                <i data-lucide="calendar-check"></i>
+                <span>Booking Management</span>
+            </a>
+
+            <a href="customers.html" class="nav-link">
+                <i data-lucide="users"></i>
+                <span>Customers</span>
+            </a>
+
+            <a href="table-layout.html" class="nav-link">
+                <i data-lucide="grid-2x2"></i>
+                <span>Table Layout</span>
+            </a>
+
+            <a href="calendar.html" class="nav-link">
+                <i data-lucide="calendar-days"></i>
+                <span>Booking Calendar</span>
+            </a>
+
+            <a href="availability.html" class="nav-link">
+                <i data-lucide="clock"></i>
+                <span>Availability</span>
+            </a>
+
+            <a href="reports.html" class="nav-link">
+                <i data-lucide="chart-column"></i>
+                <span>Reports</span>
+            </a>
+
+            <a href="notifications.html" class="nav-link active">
+                <i data-lucide="bell"></i>
+                <span>Notifications</span>
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <h2>Notifications</h2>
+                <p>Manage your booking alerts</p>
+            </div>
+
+            <button class="primary-btn" id="clearNotifications">
+                <i data-lucide="trash-2"></i>
+                Clear All
+            </button>
+        </header>
+
+        <section class="dashboard-content">
+
+            <!-- Notification Stats -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div>
+                        <p>Total Notifications</p>
+                        <h2 id="totalNotifications">0</h2>
+                    </div>
+                    <i data-lucide="bell"></i>
+                </div>
+
+                <div class="stat-card">
+                    <div>
+                        <p>Booking Confirmations</p>
+                        <h2 id="confirmationCount">0</h2>
+                    </div>
+                    <i data-lucide="calendar-check"></i>
+                </div>
+
+                <div class="stat-card">
+                    <div>
+                        <p>Today's Notifications</p>
+                        <h2 id="todayNotifications">0</h2>
+                    </div>
+                    <i data-lucide="calendar-days"></i>
+                </div>
+
+            </div>
+
+            <!-- Notification List -->
+            <div class="content-card">
+
+                <div class="table-toolbar">
+                    <div>
+                        <h3>Recent Notifications</h3>
+                        <p>Booking confirmation history</p>
+                    </div>
+                </div>
+
+                <div id="notificationList" class="notification-list">
+
+                    <div class="empty-message">
+                        <i data-lucide="bell-off"></i>
+                        <p>No notifications available.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="js/notifications.js"></script>
+<script>
+    lucide.createIcons();
+</script>
+
+</body>
+</html>

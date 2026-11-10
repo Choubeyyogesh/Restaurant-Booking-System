@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Table Layout | Restro</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <i data-lucide="utensils"></i>
+            <h2>Restro<span>.</span></h2>
+        </div>
+
+        <p class="menu-heading">MAIN MENU</p>
+
+        <nav class="sidebar-menu">
+
+            <a href="index.html" class="nav-link">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="tables.html" class="nav-link">
+                <i data-lucide="armchair"></i>
+                <span>Table Management</span>
+            </a>
+
+            <a href="bookings.html" class="nav-link">
+                <i data-lucide="calendar-check"></i>
+                <span>Bookings</span>
+            </a>
+
+            <a href="customers.html" class="nav-link">
+                <i data-lucide="users"></i>
+                <span>Customers</span>
+            </a>
+
+            <a href="table-layout.html" class="nav-link active">
+                <i data-lucide="layout-grid"></i>
+                <span>Table Layout</span>
+            </a>
+
+           <a href="calendar.html" class="nav-link">
+    <i data-lucide="calendar-days"></i>
+    <span>Calendar</span>
+</a>
+
+          <a href="availability.html" class="nav-link">
+    <i data-lucide="search-check"></i>
+    <span>Availability</span>
+</a>
+
+
+<a href="reports.html" class="nav-link">
+    <i data-lucide="chart-no-axes-combined"></i>
+    <span>Reports</span>
+</a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="user-profile">
+
+                <div class="avatar">Y</div>
+
+                <div>
+                    <h4>Admin User</h4>
+                    <p>Administrator</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+                <h2>Table Layout</h2>
+                <p>Visualize your restaurant seating arrangement.</p>
+            </div>
+
+            <button class="primary-btn" onclick="renderLayout()">
+                <i data-lucide="refresh-cw"></i>
+                Refresh Layout
+            </button>
+
+        </header>
+
+
+        <section class="dashboard-content">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>Restaurant Floor Plan</h2>
+                    <p>Monitor table availability and occupancy.</p>
+                </div>
+
+            </div>
+
+
+            <!-- STATISTICS -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i data-lucide="armchair"></i>
+                    </div>
+
+                    <p>Total Tables</p>
+                    <h2 id="totalTables">0</h2>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i data-lucide="check-circle"></i>
+                    </div>
+
+                    <p>Available</p>
+                    <h2 id="availableTables">0</h2>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i data-lucide="clock"></i>
+                    </div>
+
+                    <p>Reserved</p>
+                    <h2 id="reservedTables">0</h2>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i data-lucide="users"></i>
+                    </div>
+
+                    <p>Occupied</p>
+                    <h2 id="occupiedTables">0</h2>
+                </div>
+
+            </div>
+
+
+            <!-- FILTERS -->
+
+            <div class="content-card layout-toolbar">
+
+                <div>
+                    <h3>Seating Overview</h3>
+                    <p>Select a date and time to view reservations.</p>
+                </div>
+
+                <div class="layout-filters">
+
+                    <input type="date" id="layoutDate">
+
+                    <input type="time" id="layoutTime">
+
+                    <select id="layoutFilter">
+
+                        <option value="All">All Tables</option>
+                        <option value="Available">Available</option>
+                        <option value="Reserved">Reserved</option>
+                        <option value="Occupied">Occupied</option>
+                        <option value="Out of Service">Out of Service</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- LEGEND -->
+
+            <div class="content-card">
+
+                <h3>Table Status Legend</h3>
+
+                <div class="status-legend">
+
+                    <span>
+                        <i class="dot available-dot"></i>
+                        Available
+                    </span>
+
+                    <span>
+                        <i class="dot reserved-dot"></i>
+                        Reserved
+                    </span>
+
+                    <span>
+                        <i class="dot occupied-dot"></i>
+                        Occupied
+                    </span>
+
+                    <span>
+                        <i class="dot service-dot"></i>
+                        Out of Service
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- RESTAURANT FLOOR PLAN -->
+
+            <div class="floor-plan-container">
+
+                <div class="floor-section">
+
+                    <div class="floor-heading">
+                        <h3>
+                            <i data-lucide="utensils"></i>
+                            Indoor Dining Area
+                        </h3>
+
+                        <span>Indoor Section</span>
+                    </div>
+
+                    <div class="table-grid" id="indoorTables"></div>
+
+                </div>
+
+
+                <div class="floor-section">
+
+                    <div class="floor-heading">
+
+                        <h3>
+                            <i data-lucide="trees"></i>
+                            Outdoor Dining Area
+                        </h3>
+
+                        <span>Outdoor Section</span>
+
+                    </div>
+
+                    <div class="table-grid" id="outdoorTables"></div>
+
+                </div>
+
+            </div>
+
+
+            <div id="noTables" class="empty-message" hidden>
+                No tables found. Please add tables from Table Management.
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- TABLE DETAILS MODAL -->
+
+<div class="modal-overlay" id="tableDetailsModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+                <h3>Table Details</h3>
+                <p>Restaurant seating information.</p>
+            </div>
+
+            <button class="close-btn" onclick="closeTableDetails()">
+                &times;
+            </button>
+
+        </div>
+
+        <div id="tableDetails"></div>
+
+    </div>
+
+</div>
+
+
+<script src="js/table-layout.js"></script>
+
+</body>
+
+</html>

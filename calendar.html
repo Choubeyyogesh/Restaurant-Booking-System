@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Booking Calendar | Restro</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <i data-lucide="utensils"></i>
+            <h2>Restro<span>.</span></h2>
+        </div>
+
+        <p class="menu-heading">MAIN MENU</p>
+
+        <nav class="sidebar-menu">
+
+            <a href="index1.html" class="nav-link">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="tables.html" class="nav-link">
+                <i data-lucide="armchair"></i>
+                <span>Table Management</span>
+            </a>
+
+            <a href="bookings.html" class="nav-link">
+                <i data-lucide="calendar-check"></i>
+                <span>Bookings</span>
+            </a>
+
+            <a href="customers.html" class="nav-link">
+                <i data-lucide="users"></i>
+                <span>Customers</span>
+            </a>
+
+            <a href="table-layout.html" class="nav-link">
+                <i data-lucide="layout-grid"></i>
+                <span>Table Layout</span>
+            </a>
+
+            <a href="calendar.html" class="nav-link active">
+                <i data-lucide="calendar-days"></i>
+                <span>Calendar</span>
+            </a>
+
+        <a href="availability.html" class="nav-link">
+    <i data-lucide="search-check"></i>
+    <span>Availability</span>
+</a>
+
+<a href="reports.html" class="nav-link">
+    <i data-lucide="chart-no-axes-combined"></i>
+    <span>Reports</span>
+</a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="user-profile">
+
+                <div class="avatar">Y</div>
+
+                <div>
+                    <h4>Admin User</h4>
+                    <p>Administrator</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+                <h2>Booking Calendar</h2>
+                <p>Track all restaurant reservations.</p>
+            </div>
+
+            <a href="bookings.html" class="primary-btn">
+                <i data-lucide="plus"></i>
+                New Booking
+            </a>
+
+        </header>
+
+
+        <section class="dashboard-content">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>Reservation Calendar</h2>
+                    <p>Manage bookings by date.</p>
+                </div>
+
+            </div>
+
+
+            <!-- STATISTICS -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        <i data-lucide="calendar"></i>
+                    </div>
+
+                    <p>Total Bookings</p>
+                    <h2 id="calendarTotal">0</h2>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        <i data-lucide="check-circle"></i>
+                    </div>
+
+                    <p>Confirmed</p>
+                    <h2 id="calendarConfirmed">0</h2>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        <i data-lucide="clock"></i>
+                    </div>
+
+                    <p>Pending</p>
+                    <h2 id="calendarPending">0</h2>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        <i data-lucide="users"></i>
+                    </div>
+
+                    <p>Total Guests</p>
+                    <h2 id="calendarGuests">0</h2>
+
+                </div>
+
+            </div>
+
+
+            <!-- CALENDAR -->
+
+            <div class="content-card calendar-card">
+
+                <div class="calendar-toolbar">
+
+                    <div>
+                        <h2 id="calendarMonth">Month Year</h2>
+                        <p>Restaurant reservation schedule</p>
+                    </div>
+
+                    <div class="calendar-navigation">
+
+                        <button id="prevMonth" class="calendar-nav-btn">
+                            <i data-lucide="chevron-left"></i>
+                        </button>
+
+                        <button id="todayBtn" class="today-btn">
+                            Today
+                        </button>
+
+                        <button id="nextMonth" class="calendar-nav-btn">
+                            <i data-lucide="chevron-right"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- LEGEND -->
+
+                <div class="calendar-legend">
+
+                    <span>
+                        <i class="legend-dot confirmed-dot"></i>
+                        Confirmed
+                    </span>
+
+                    <span>
+                        <i class="legend-dot pending-dot"></i>
+                        Pending
+                    </span>
+
+                    <span>
+                        <i class="legend-dot seated-dot"></i>
+                        Seated
+                    </span>
+
+                    <span>
+                        <i class="legend-dot cancelled-dot"></i>
+                        Cancelled
+                    </span>
+
+                    <span>
+                        <i class="legend-dot noshow-dot"></i>
+                        No-Show
+                    </span>
+
+                </div>
+
+
+                <!-- CALENDAR GRID -->
+
+                <div class="calendar-grid">
+
+                    <div class="calendar-weekday">MON</div>
+                    <div class="calendar-weekday">TUE</div>
+                    <div class="calendar-weekday">WED</div>
+                    <div class="calendar-weekday">THU</div>
+                    <div class="calendar-weekday">FRI</div>
+                    <div class="calendar-weekday">SAT</div>
+                    <div class="calendar-weekday">SUN</div>
+
+                    <div id="calendarDays" class="calendar-days"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SELECTED DATE BOOKINGS -->
+
+            <div class="content-card selected-date-card">
+
+                <div class="table-toolbar">
+
+                    <div>
+                        <h3 id="selectedDateTitle">
+                            Today's Reservations
+                        </h3>
+
+                        <p>Reservations for selected date.</p>
+                    </div>
+
+                    <span id="selectedBookingCount">
+                        0 Bookings
+                    </span>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Booking ID</th>
+                                <th>Customer</th>
+                                <th>Time</th>
+                                <th>Guests</th>
+                                <th>Table</th>
+                                <th>Status</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="selectedBookings"></tbody>
+
+                    </table>
+
+                    <div id="noCalendarBookings"
+                        class="empty-message" hidden>
+
+                        No reservations on this date.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="js/calendar.js"></script>
+
+</body>
+</html>

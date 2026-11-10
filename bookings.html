@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Booking Management | Restro</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <i data-lucide="utensils"></i>
+            <h2>Restro<span>.</span></h2>
+        </div>
+
+        <p class="menu-heading">MAIN MENU</p>
+
+        <nav class="sidebar-menu">
+
+            <a href="index1.html" class="nav-link">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="tables.html" class="nav-link">
+                <i data-lucide="armchair"></i>
+                <span>Table Management</span>
+            </a>
+
+            <a href="bookings.html" class="nav-link active">
+                <i data-lucide="calendar-check"></i>
+                <span>Bookings</span>
+            </a>
+
+            <a href="customers.html" class="nav-link">
+                <i data-lucide="users"></i>
+                <span>Customers</span>
+            </a>
+
+            <a href="table-layout.html" class="nav-link">
+                <i data-lucide="layout-grid"></i>
+                <span>Table Layout</span>
+            </a>
+
+            <a href="calendar.html" class="nav-link">
+                <i data-lucide="calendar-days"></i>
+                <span>Calendar</span>
+            </a>
+
+            <a href="availability.html" class="nav-link">
+                <i data-lucide="search-check"></i>
+                <span>Availability</span>
+            </a>
+
+            <a href="reports.html" class="nav-link">
+                <i data-lucide="chart-no-axes-combined"></i>
+                <span>Reports</span>
+            </a>
+
+            <a href="notifications.html" class="nav-link">
+                <i data-lucide="bell"></i>
+                <span>Notifications</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="user-profile">
+                <div class="avatar">Y</div>
+
+                <div>
+                    <h4>Admin User</h4>
+                    <p>Administrator</p>
+                </div>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+                <h2>Booking Management</h2>
+                <p>Manage restaurant reservations.</p>
+            </div>
+
+            <button class="primary-btn" onclick="openBookingModal()">
+                <i data-lucide="plus"></i>
+                New Booking
+            </button>
+
+        </header>
+
+
+        <section class="dashboard-content">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>Reservations</h2>
+                    <p>Manage all customer bookings.</p>
+                </div>
+
+            </div>
+
+
+            <!-- Statistics -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        <i data-lucide="calendar-check"></i>
+                    </div>
+
+                    <p>Total Bookings</p>
+                    <h2 id="totalBookings">0</h2>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        <i data-lucide="check-circle"></i>
+                    </div>
+
+                    <p>Confirmed</p>
+                    <h2 id="confirmedBookings">0</h2>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        <i data-lucide="clock"></i>
+                    </div>
+
+                    <p>Pending</p>
+                    <h2 id="pendingBookings">0</h2>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        <i data-lucide="users"></i>
+                    </div>
+
+                    <p>Total Guests</p>
+                    <h2 id="totalGuests">0</h2>
+
+                </div>
+
+            </div>
+
+
+            <!-- Booking Table -->
+            <div class="content-card table-management-card">
+
+                <div class="table-toolbar">
+
+                    <div>
+                        <h3>All Reservations</h3>
+                        <p>View and manage customer bookings.</p>
+                    </div>
+
+                    <div class="table-controls">
+
+                        <input
+                            type="search"
+                            id="searchBooking"
+                            placeholder="Search booking..."
+                        >
+
+                        <select id="bookingFilter">
+
+                            <option value="All">All Status</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Confirmed">Confirmed</option>
+                            <option value="Seated">Seated</option>
+                            <option value="Cancelled">Cancelled</option>
+                            <option value="No-Show">No-Show</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Booking ID</th>
+                                <th>Customer</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Guests</th>
+                                <th>Table</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="bookingBody"></tbody>
+
+                    </table>
+
+                    <div id="emptyBookings" class="empty-message" hidden>
+                        No bookings found.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- Booking Modal -->
+<div class="modal-overlay" id="bookingModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+                <h3 id="bookingModalTitle">Create New Booking</h3>
+                <p>Enter customer reservation details.</p>
+            </div>
+
+            <button class="close-btn" onclick="closeBookingModal()">
+                &times;
+            </button>
+
+        </div>
+
+
+        <form id="bookingForm">
+
+            <input type="hidden" id="editBookingId">
+
+
+            <label>Customer Name</label>
+
+            <input
+                type="text"
+                id="customerName"
+                placeholder="Enter customer name"
+                required
+            >
+
+
+            <label>Phone Number</label>
+
+            <input
+                type="tel"
+                id="customerPhone"
+                placeholder="10 digit mobile number"
+                pattern="[0-9]{10}"
+                maxlength="10"
+                required
+            >
+
+
+            <!-- NEW EMAIL FIELD -->
+            <label>Email Address</label>
+
+            <input
+                type="email"
+                id="customerEmail"
+                placeholder="Enter customer email"
+                required
+            >
+
+
+            <label>Booking Date</label>
+
+            <input
+                type="date"
+                id="bookingDate"
+                required
+            >
+
+
+            <label>Booking Time</label>
+
+            <input
+                type="time"
+                id="bookingTime"
+                required
+            >
+
+
+            <label>Number of Guests</label>
+
+            <select id="guestCount" required>
+
+                <option value="1">1 Guest</option>
+                <option value="2">2 Guests</option>
+                <option value="3">3 Guests</option>
+                <option value="4">4 Guests</option>
+                <option value="5">5 Guests</option>
+                <option value="6">6 Guests</option>
+                <option value="7">7 Guests</option>
+                <option value="8">8 Guests</option>
+
+            </select>
+
+
+            <label>Select Table</label>
+
+            <select id="bookingTable" required>
+                <option value="">Select a table</option>
+            </select>
+
+
+            <label>Booking Status</label>
+
+            <select id="bookingStatus" required>
+
+                <option value="Pending">Pending</option>
+                <option value="Confirmed">Confirmed</option>
+                <option value="Seated">Seated</option>
+                <option value="Cancelled">Cancelled</option>
+                <option value="No-Show">No-Show</option>
+
+            </select>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    onclick="closeBookingModal()">
+
+                    Cancel
+
+                </button>
+
+                <button type="submit" class="primary-btn">
+                    Save Booking
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="js/bookings.js"></script>
+
+<script>
+    lucide.createIcons();
+</script>
+
+</body>
+</html>
